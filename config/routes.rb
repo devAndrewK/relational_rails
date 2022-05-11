@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get '/tours', to: 'tours#index'
   get '/tours/new', to: 'tours#new'
   post '/tours', to: 'tours#create'
+  get '/tours/:id', to: 'tours#show'
 end

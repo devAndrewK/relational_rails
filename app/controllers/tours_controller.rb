@@ -19,4 +19,8 @@ class ToursController < ApplicationController
       
           redirect_to '/tours'
     end
+
+    def show
+        @tour = Tour.find(params[:id])
+    end
 end

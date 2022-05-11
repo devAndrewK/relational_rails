@@ -1,5 +1,5 @@
 <h1>All Tours</h1>
 
 <% @tours.each do |tour| %>
-  <h3><%= tour.name %></h3>
+  <h3><a href="/tours/<%= tour.id %>"><%= tour.name %></a></h3>
 <% end %>
