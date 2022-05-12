@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get '/tours/new', to: 'tours#new'
   post '/tours', to: 'tours#create'
   get '/tours/:id', to: 'tours#show'
+  get '/venues', to: 'venues#index'
+  get '/venues/:id', to: 'venues#show'
 end
