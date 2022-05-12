@@ -11,8 +11,8 @@ class ToursController < ApplicationController
             name: params[:tour][:name],
             created_at: Time.now,
             updated_at: Time.now,
-            sold_out: false,
-            merch_on_hand: 100
+            sold_out: params[:sold_out],
+            merch_on_hand: params[:merch_on_hand]
             })
       
           tour.save
