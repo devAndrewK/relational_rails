@@ -16,9 +16,19 @@ RSpec.describe "tours id page", type: :feature do
     expect(page).to_not have_content(tour_2.name)
     expect(page).to have_content("Sold Out: #{tour_1.sold_out}")
     expect(page).to have_content("Merch Items: #{tour_1.merch_on_hand}")
-    # expect(page).to have_content(tour_2.name)
-    # expect(page).to have_content("Sold Out: #{tour_2.sold_out}")
-    # expect(page).to have_content("Merch Items: #{tour_2.merch_on_hand}")
+  end
+
+  it "shows count of venues on that tour" do
+    gojira = Tour.create!(name: 'Gojira', sold_out: false, merch_on_hand: 1000)
+    rave = gojira.venues.create!(name: 'The Rave', capacity: 3500, all_ages: true, 
+        city: 'Milwaukee')
+    agganis = gojira.venues.create!(name: 'Agganis Arena', capacity: 3000, all_ages: true, 
+        city: 'Boston')
+
+    visit "/tours/#{gojira.id}"
+    
+    expect(page).to have_content("Venues: 2")
+        
   end
 
 
