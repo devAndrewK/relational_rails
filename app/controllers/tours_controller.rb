@@ -1,6 +1,6 @@
 class ToursController < ApplicationController
     def index
-        @tours = Tour.all
+        @tours = Tour.all.sort_by{ |tour| tour.created_at }.reverse
     end
 
     def new
@@ -22,5 +22,6 @@ class ToursController < ApplicationController
 
     def show
         @tour = Tour.find(params[:id])
+        @venues = Venue.where(tour_id: @tour.id)
     end
 end
