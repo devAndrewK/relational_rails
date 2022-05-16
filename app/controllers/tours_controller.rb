@@ -19,4 +19,9 @@ class ToursController < ApplicationController
         @tour = Tour.find(params[:id])
         @venues = Venue.where(tour_id: @tour.id)
     end
+
+    def destroy
+        Tour.destroy(params[:id])
+        redirect_to '/tours'
+    end
 end
