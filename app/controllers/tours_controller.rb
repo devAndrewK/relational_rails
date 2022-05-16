@@ -1,6 +1,6 @@
 class ToursController < ApplicationController
     def index
-        @tours = Tour.all.sort_by{ |tour| tour.created_at }.reverse
+        @tours = Tour.order_recent
     end
 
     def new
