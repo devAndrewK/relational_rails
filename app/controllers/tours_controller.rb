@@ -7,17 +7,12 @@ class ToursController < ApplicationController
     end
 
     def create
-        tour = Tour.new({
-            name: params[:tour][:name],
-            created_at: Time.now,
-            updated_at: Time.now,
-            sold_out: params[:sold_out],
-            merch_on_hand: params[:merch_on_hand]
-            })
+        binding.pry
+        tour = Tour.create(name: params[:name],
+                            merch_on_hand: params[:merch_on_hand],
+                            sold_out: false)
       
-          tour.save
-      
-          redirect_to '/tours'
+        redirect_to "/tours"
     end
 
     def show

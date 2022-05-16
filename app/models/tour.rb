@@ -8,7 +8,4 @@ class Tour < ApplicationRecord
         self.all.order(created_at: :desc)
     end
 
-    # def count
-
-    # end
 end
