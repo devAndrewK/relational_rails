@@ -1,27 +1,27 @@
 class ToursController < ApplicationController
     def index
-        @tours = Tour.all.sort_by{ |tour| tour.created_at }.reverse
+        @tours = Tour.order_recent
     end
 
     def new
     end
 
     def create
-        tour = Tour.new({
-            name: params[:tour][:name],
-            created_at: Time.now,
-            updated_at: Time.now,
-            sold_out: params[:sold_out],
-            merch_on_hand: params[:merch_on_hand]
-            })
+        binding.pry
+        tour = Tour.create(name: params[:name],
+                            merch_on_hand: params[:merch_on_hand],
+                            sold_out: false)
       
-          tour.save
-      
-          redirect_to '/tours'
+        redirect_to "/tours"
     end
 
     def show
         @tour = Tour.find(params[:id])
         @venues = Venue.where(tour_id: @tour.id)
+    end
+
+    def destroy
+        Tour.destroy(params[:id])
+        redirect_to '/tours'
     end
 end

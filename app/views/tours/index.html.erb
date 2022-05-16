@@ -1,6 +1,8 @@
-<h1>All Tours</h1>
+<h1>Tour Index</h1>
+<h2><a href="/tours/new">New Tour</a></h2>
 
 <% @tours.each do |tour| %>
   <h3><a href="/tours/<%= tour.id %>"><%= tour.name %></a></h3>
   <p>Date Created: <%= tour.created_at %></p>
+  <%= button_to 'Delete', "/tours/#{tour.id}", method: :delete %>
 <% end %>

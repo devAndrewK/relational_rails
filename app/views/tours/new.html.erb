@@ -1,6 +1,10 @@
-<form action="/tours" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <p>Enter a new tour:</p>
-  <input type='text' name='tour[name]'/><br/>
-  <input type='submit'/>
-</form>
+<%= form_with url: '/tours', method: :post, local: true do |form| %>
+    <p><%= form.label :name %>
+    <%= form.text_field :name %></p>
+    <%= form.label :merch_on_hand %>
+    <%= form.text_field :merch_on_hand %>
+
+    <%= form.submit "Create Tour" %>
+<% end %>
+
+ 
