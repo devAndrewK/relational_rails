@@ -23,6 +23,24 @@ RSpec.describe "tours index page", type: :feature do
     heilung = Tour.create!(name: 'Heilung', sold_out: true, merch_on_hand: 3000)
 
     visit "/tours"    
-    expect(gojira.name).to appear_before(heilung.name)
+    expect(heilung.name).to appear_before(gojira.name)
+  end
+
+  it 'can go to tour edit page from tour index' do
+    heilung = Tour.create!(name: 'Heilung', sold_out: true, merch_on_hand: 3000)
+
+    visit "/tours"
+
+    click_button 'Edit'
+
+    expect(current_path).to eq("/tours/#{heilung.id}/edit")
+
+    fill_in 'name', with: 'Wardruna'
+    fill_in 'merch_on_hand', with: '650'
+    choose 'sold_out_false'
+
+    click_button 'Update Tour'
+    expect(current_path).to eq('/tours')
+    expect(page).to have_content('Wardruna')
   end
 end
