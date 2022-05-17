@@ -1,0 +1,15 @@
+<%= form_with url: "/tours/#{params[:tour_id]}/venues", method: :post, local: true do |form| %>
+    <p><%= form.label :name %>
+    <%= form.text_field :name %></p>
+    <p><%= form.label :city %>
+    <%= form.text_field :city %></p>
+    <%= form.label :capacity %>
+    <%= form.text_field :capacity %>
+    <p>All Ages?</p>
+    <p><%= form.label :all_ages, "Yes" %>
+    <%= form.radio_button :all_ages, 'true' %>
+    <%= form.label :all_ages, "No" %>
+    <%= form.radio_button :all_ages, 'false' %></p>
+
+    <%= form.submit "Create Venue" %>
+<% end %>
