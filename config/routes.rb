@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get '/venues/:id', to: 'venues#show'
   get '/tours/:tour_id/venues', to: 'tour_venues#index'
   delete '/tours/:id', to: 'tours#destroy'
+  get '/tours/:tour_id/edit', to: 'tours#edit'
 end

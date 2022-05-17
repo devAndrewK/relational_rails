@@ -1,0 +1,10 @@
+<%= form_with url: '/tours/#{@tour.id}', method: :patch, local: true do |form| %>
+    <p><%= form.label :name %>
+    <%= form.text_field :name %></p>
+    <%= form.label :merch_on_hand %>
+    <%= form.text_field :merch_on_hand %>
+
+    <%= form.submit "Update Tour" %>
+<% end %>
+
+ 

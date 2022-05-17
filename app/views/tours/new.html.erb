@@ -1,8 +1,13 @@
 <%= form_with url: '/tours', method: :post, local: true do |form| %>
     <p><%= form.label :name %>
     <%= form.text_field :name %></p>
-    <%= form.label :merch_on_hand %>
+    <%= form.label :merch_on_hand, "Merch Count" %>
     <%= form.text_field :merch_on_hand %>
+    <p>Sold Out?</p>
+    <p><%= form.label :sold_out, "Yes" %>
+    <%= form.radio_button :sold_out, 'true' %>
+    <%= form.label :sold_out, "No" %>
+    <%= form.radio_button :sold_out, 'false' %></p>
 
     <%= form.submit "Create Tour" %>
 <% end %>

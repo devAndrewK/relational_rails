@@ -10,7 +10,7 @@ class ToursController < ApplicationController
         binding.pry
         tour = Tour.create(name: params[:name],
                             merch_on_hand: params[:merch_on_hand],
-                            sold_out: false)
+                            sold_out: params[:sold_out])
       
         redirect_to "/tours"
     end
@@ -24,4 +24,19 @@ class ToursController < ApplicationController
         Tour.destroy(params[:id])
         redirect_to '/tours'
     end
+
+    def edit
+        @tour = Tour.find(params[:id])
+    end
+
+    def update
+       tour = Tour.find(params[:id])
+       tour.update(tour_params)
+       redirect_to '/tours' 
+    end
+
+    private
+        def tour_params
+            params.permit(:name, :merch_on_hand, :sold_out)
+        end
 end
