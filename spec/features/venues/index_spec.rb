@@ -40,4 +40,28 @@ RSpec.describe "venues index page", type: :feature do
     expect(page).to_not have_content(mohegan.name)
   end
 
+  it 'can go to venue edit page from venue index' do
+    gojira = Tour.create!(name: 'Gojira', sold_out: false, merch_on_hand: 1000)
+    rave = gojira.venues.create!(name: 'The Rave', capacity: 3500, all_ages: true, 
+      city: 'Milwaukee')
+    agganis = gojira.venues.create!(name: 'Agganis Arena', capacity: 3000, all_ages: true, 
+      city: 'Boston')
+    pier = gojira.venues.create!(name: 'Pier 17', capacity: 4000, all_ages: true, 
+      city: 'New York')
+    mohegan = gojira.venues.create!(name: 'Mohegan Sun Arena', capacity: 3500, all_ages: false, 
+       city: 'Washington, DC')
+
+    visit "/venues"
+
+    click_button 'Edit The Rave'
+
+    expect(current_path).to eq("/venues/#{rave.id}/edit")
+
+    fill_in 'name', with: 'Eagles Ballroom'
+
+    click_button 'Update Venue'
+    expect(current_path).to eq("/venues/#{rave.id}")
+    expect(page).to have_content('Eagles Ballroom')
+  end
+
 end

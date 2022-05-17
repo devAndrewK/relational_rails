@@ -31,7 +31,7 @@ RSpec.describe "tours index page", type: :feature do
 
     visit "/tours"
 
-    click_button 'Edit'
+    click_button 'Edit Heilung'
 
     expect(current_path).to eq("/tours/#{heilung.id}/edit")
 
