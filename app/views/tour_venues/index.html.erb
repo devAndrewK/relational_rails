@@ -1,3 +1,4 @@
+<%= link_to 'Create Venue', "/tours/#{params[:tour_id]}/venues/new" %>
 <% @venues.each do |venue| %>
     <h3><a href="/venues/<%= venue.id %>"><%= venue.name %></a></h3>
     <p><%= venue.city %></p>

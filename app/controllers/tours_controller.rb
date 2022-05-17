@@ -7,7 +7,6 @@ class ToursController < ApplicationController
     end
 
     def create
-        binding.pry
         tour = Tour.create(name: params[:name],
                             merch_on_hand: params[:merch_on_hand],
                             sold_out: params[:sold_out])

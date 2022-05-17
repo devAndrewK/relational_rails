@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   delete '/tours/:id', to: 'tours#destroy'
   get '/tours/:tour_id/edit', to: 'tours#edit'
   patch '/tours/:id', to: 'tours#update'
+  get '/tours/:tour_id/venues/new', to: 'tour_venues#new'
+  post '/tours/:tour_id/venues', to: 'tour_venues#create'
 end
