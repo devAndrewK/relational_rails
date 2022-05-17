@@ -21,4 +21,23 @@ RSpec.describe "venues index page", type: :feature do
     expect(page).to have_content(venue_2.name)
   end
 
+  it "only shows all_ages shows" do
+    gojira = Tour.create!(name: 'Gojira', sold_out: false, merch_on_hand: 1000)
+    rave = gojira.venues.create!(name: 'The Rave', capacity: 3500, all_ages: true, 
+      city: 'Milwaukee')
+    agganis = gojira.venues.create!(name: 'Agganis Arena', capacity: 3000, all_ages: true, 
+      city: 'Boston')
+    pier = gojira.venues.create!(name: 'Pier 17', capacity: 4000, all_ages: true, 
+      city: 'New York')
+    mohegan = gojira.venues.create!(name: 'Mohegan Sun Arena', capacity: 3500, all_ages: false, 
+       city: 'Washington, DC')
+
+    visit '/venues'
+
+    expect(page).to have_content(pier.name)
+    expect(page).to have_content(rave.name)
+    expect(page).to have_content(agganis.name)
+    expect(page).to_not have_content(mohegan.name)
+  end
+
 end

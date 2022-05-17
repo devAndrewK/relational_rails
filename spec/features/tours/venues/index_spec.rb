@@ -26,4 +26,8 @@ RSpec.describe 'Tours venues index' do
         expect(current_path).to eq("/venues/#{rave.id}")
     end
 
+    it "has a link to sort venues in alphabetical order" do
+        
+    end
+
 end
