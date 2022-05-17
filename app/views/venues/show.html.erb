@@ -6,3 +6,4 @@
 <p>Capcity: <%= @venue.capacity %></p>
 
 <p><%= link_to 'Update Venue', "/venues/#{@venue.id}/edit" %></p>
+<%= button_to "Delete", "/venues/#{@venue.id}", method: :delete %>
