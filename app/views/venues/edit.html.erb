@@ -1,0 +1,15 @@
+<%= form_with url: "/venues/#{@venue.id}", method: :patch, local: true do |form| %>
+    <p><%= form.label :name %>
+    <%= form.text_field :name, :value => @venue.name %></p>
+    <%= form.label :capacity %>
+    <%= form.text_field :capacity, :value => @venue.capacity %>
+    <%= form.label :city %>
+    <%= form.text_field :city, :value => @venue.city %>
+    <p>All Ages?</p>
+    <p><%= form.label :all_ages, "Yes" %>
+    <%= form.radio_button :all_ages, 'true', :checked => @radio_all_ages_yes %>
+    <%= form.label :all_ages, "No" %>
+    <%= form.radio_button :all_ages, 'false', :checked => @radio_all_ages_no %></p>
+
+    <%= form.submit "Update Venue" %>
+<% end %>
