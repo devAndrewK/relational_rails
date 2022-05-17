@@ -4,5 +4,6 @@
 <% @tours.each do |tour| %>
   <h3><a href="/tours/<%= tour.id %>"><%= tour.name %></a></h3>
   <p>Date Created: <%= tour.created_at %></p>
+  <%= button_to 'Edit', "/tours/#{tour.id}/edit", method: :get %>
   <%= button_to 'Delete', "/tours/#{tour.id}", method: :delete %>
 <% end %>
