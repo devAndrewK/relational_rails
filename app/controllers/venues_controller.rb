@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
     def index
-        @venues = Venue.all
+        @venues = Venue.only_all_ages
     end
 
     def new
