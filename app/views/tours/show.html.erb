@@ -5,3 +5,5 @@
 <p><a href="/tours/<%= @tour.id %>/venues" >Venues: </a><%= @venues.count %></p>
 <p>Sold Out: <%= @tour.sold_out %></p>
 <p>Merch Items: <%= @tour.merch_on_hand %></p>
+<%= button_to "Edit", "/tours/#{@tour.id}/edit", method: :get %>
+<%= button_to "Delete", "/tours/#{@tour.id}", method: :delete %>
