@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   patch '/tours/:id', to: 'tours#update'
   get '/tours/:tour_id/venues/new', to: 'tour_venues#new'
   post '/tours/:tour_id/venues', to: 'tour_venues#create'
+  get '/venues/:id/edit', to: 'venues#edit'
+  patch '/venues/:id', to: 'venues#update'
 end
