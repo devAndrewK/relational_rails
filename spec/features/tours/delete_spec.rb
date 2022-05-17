@@ -6,10 +6,10 @@ RSpec.describe 'delete a tour' do
 
     visit '/tours'
 
-    click_button 'Delete'
+    click_button 'Delete Heilung'
 
     expect(current_path).to eq('/tours')
     expect(page).to_not have_content(heilung.name)
-    expect(page).to_not have_button('Delete')
+    expect(page).to_not have_button('Delete Heilung')
   end
 end
