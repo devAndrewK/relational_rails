@@ -26,7 +26,14 @@ class ToursController < ApplicationController
     end
 
     def edit
-        @tour = Tour.find(params[:id])
+        @tour = Tour.find(params[:tour_id])
+        @radio_sold_out_yes = false
+        @radio_sold_out_no = false
+        if @tour.sold_out
+            @radio_sold_out_yes = true
+        else
+            @radio_sold_out_no = true
+        end
     end
 
     def update
