@@ -1,8 +1,13 @@
-<%= form_with url: '/tours/#{@tour.id}', method: :patch, local: true do |form| %>
+<%= form_with url: "/tours/#{@tour.id}", method: :patch, local: true do |form| %>
     <p><%= form.label :name %>
-    <%= form.text_field :name %></p>
-    <%= form.label :merch_on_hand %>
-    <%= form.text_field :merch_on_hand %>
+    <%= form.text_field :name, :value => @tour.name %></p>
+    <%= form.label :merch_on_hand, "Merch Count" %>
+    <%= form.text_field :merch_on_hand, :value => @tour.merch_on_hand %>
+    <p>Sold Out?</p>
+    <p><%= form.label :sold_out, "Yes" %>
+    <%= form.radio_button :sold_out, 'true', :checked => @radio_sold_out_yes %>
+    <%= form.label :sold_out, "No" %>
+    <%= form.radio_button :sold_out, 'false', :checked => @radio_sold_out_no %></p>
 
     <%= form.submit "Update Tour" %>
 <% end %>
