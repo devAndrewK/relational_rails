@@ -7,9 +7,7 @@ class ToursController < ApplicationController
     end
 
     def create
-        tour = Tour.create(name: params[:name],
-                            merch_on_hand: params[:merch_on_hand],
-                            sold_out: params[:sold_out])
+        tour = Tour.create!(tour_params)
       
         redirect_to "/tours"
     end
