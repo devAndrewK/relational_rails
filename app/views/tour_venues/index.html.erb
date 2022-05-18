@@ -1,5 +1,10 @@
 <%= link_to 'Create Venue', "/tours/#{params[:tour_id]}/venues/new" %>
-<p><%= link_to 'Sort Alphabetically', :sort => "name" %></p>
+<p><%= link_to 'Sort Alphabetically', :sort => "name", :threshold => params[:threshold] %></p>
+<%= form_with url: "/tours/#{params[:tour_id]}/venues", method: :get, local: true do |form| %>
+    <p><%= form.label :threshold %>
+    <%= form.number_field :threshold, :value => params[:threshold] %></p>
+    <%= form.submit "Only return records more than `number` of `capacity`" %>
+<% end %>
 <% @venues.each do |venue| %>
     <h3><a href="/venues/<%= venue.id %>"><%= venue.name %></a></h3>
     <p><%= venue.city %></p>
