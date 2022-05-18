@@ -6,20 +6,6 @@ class VenuesController < ApplicationController
     def new
     end
 
-    def create
-        venue = Venue.new({
-            name: params[:venue][:name],
-            created_at: Time.now,
-            updated_at: Time.now,
-            all_ages: false,
-            capacity: 100
-            })
-      
-          venue.save
-      
-          redirect_to '/venues'
-    end
-
     def edit
         @venue = Venue.find(params[:id])
         @radio_all_ages_yes = false

@@ -16,7 +16,7 @@ RSpec.describe "venues index page", type: :feature do
                             city: "Chicago",
                             tour_id: tour_1.id)                     
 
-    visit "/venues"
+    visit '/venues'
     expect(page).to have_content(venue_1.name)
     expect(page).to have_content(venue_2.name)
   end
@@ -38,6 +38,7 @@ RSpec.describe "venues index page", type: :feature do
     expect(page).to have_content(rave.name)
     expect(page).to have_content(agganis.name)
     expect(page).to_not have_content(mohegan.name)
+    
   end
 
   it 'can go to venue edit page from venue index' do

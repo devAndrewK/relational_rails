@@ -20,7 +20,7 @@ RSpec.describe 'edit a tour' do
   end
 
   it 'can go to tour show and edit a tour' do
-    heilung = Tour.create!(name: 'Heilung', sold_out: true, merch_on_hand: 3000)
+    heilung = Tour.create!(name: 'Heilung', sold_out: false, merch_on_hand: 3000)
 
     visit "/tours/#{heilung.id}"
 
@@ -30,7 +30,7 @@ RSpec.describe 'edit a tour' do
 
     fill_in 'name', with: 'Wardruna'
     fill_in 'merch_on_hand', with: '650'
-    choose 'sold_out_false'
+    choose 'sold_out_true'
 
     click_button 'Update Tour'
     expect(current_path).to eq('/tours')

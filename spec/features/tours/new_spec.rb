@@ -13,9 +13,9 @@ RSpec.describe 'create new Tour' do
         
         fill_in 'name', with: 'Tesseract'
         fill_in 'merch_on_hand', with: '500'
+        choose 'sold_out_true'
         click_button 'Create Tour'
         
-        new_tour_id = Tour.last.id
         expect(current_path).to eq("/tours")
         expect(page).to have_content("Tesseract")
     end

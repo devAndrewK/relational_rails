@@ -23,7 +23,6 @@ RSpec.describe Venue, type: :model do
           city: 'New York')
         mohegan = gojira.venues.create!(name: 'Mohegan Sun Arena', capacity: 3500, all_ages: false, 
           city: 'Washington, DC')
-          binding.pry
 
         expect(Venue.only_all_ages).to eq([rave, agganis, pier])
 
